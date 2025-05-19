@@ -17,7 +17,6 @@
   import { onMounted } from 'vue';
   
   onMounted(() => {
-    // Fix for scroll positioning to account for sticky header
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
