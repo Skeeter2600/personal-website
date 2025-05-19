@@ -1,0 +1,276 @@
+/* GENERAL */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://unpkg.com/boxicons@2.1.4/dist/boxicons.js");
+
+// Color Variables
+$clr-dark-a0: #000000;
+$clr-light-a0: #FAF9F6;
+
+// Dark theme primary colors
+$clr-primary-a0: #9e0a0a;
+$clr-primary-a10: #ad3423;
+$clr-primary-a20: #bb503b;
+$clr-primary-a30: #c86a55;
+$clr-primary-a40: #d4836f;
+$clr-primary-a50: #df9b8a;
+
+// Dark theme surface colors
+$clr-surface-a0: #121212;
+$clr-surface-a10: #282828;
+$clr-surface-a20: #3f3f3f;
+$clr-surface-a30: #575757;
+$clr-surface-a40: #717171;
+$clr-surface-a50: #8b8b8b;
+
+// Dark theme tonal surface colors
+$clr-surface-tonal-a0: #211512;
+$clr-surface-tonal-a10: #362a28;
+$clr-surface-tonal-a20: #4c413f;
+$clr-surface-tonal-a30: #635957;
+$clr-surface-tonal-a40: #7b7371;
+$clr-surface-tonal-a50: #948d8b;
+
+// Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  background-color: $clr-surface-a0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  justify-content: center;
+  align-items: center;
+  background-color: $clr-surface-a0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+p {
+  color: $clr-surface-tonal-a40;
+  font-size: 2vmin;
+}
+
+// Transitions
+a,
+.btn {
+  transition: all 300ms ease;
+}
+
+a {
+  background-color: transparent;
+}
+
+// Desktop Navigation
+nav,
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: transparent;
+  justify-content: center;
+  flex-direction: row;
+}
+
+nav {
+  justify-content: space-around;
+  align-items: center;
+  height: 17vh;
+  width: 100%;
+  background-color: $clr-surface-a10;
+  border-radius: 0 0 25px 25px;
+}
+
+.nav-links {
+  gap: 2rem;
+  list-style: none;
+  font-size: 1.5rem;
+  background-color: $clr-surface-a10;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+a {
+  color: $clr-surface-a50;
+  text-decoration: none;
+  text-decoration-color: $clr-surface-a10;
+  font-size: 3vmin;
+  
+  &:hover {
+    color: $clr-primary-a10;
+    text-decoration: underline;
+    text-underline-offset: 1rem;
+    text-decoration-color: $clr-primary-a10;
+  }
+}
+
+.logo {
+  font-size: 5vmin;
+  background-color: transparent;
+  color: $clr-surface-a50;
+  
+  &:hover {
+    cursor: default;
+  }
+}
+
+.menu-links {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: $clr-surface-a10;
+  width: fit-content;
+  max-height: 0;
+  overflow: hidden;
+  
+  a {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    font-size: 10vmin;
+    color: $clr-surface-a10;
+    text-decoration: none;
+  }
+  
+  li {
+    list-style: none;
+    background-color: $clr-surface-a10;
+  }
+  
+  &.open {
+    max-height: 300px;
+  }
+}
+
+li {
+  background-color: $clr-surface-a10;
+}
+
+.title {
+  font-size: 3rem;
+  color: $clr-surface-a50;
+  text-align: center;
+  background-color: transparent;
+}
+
+.navbar_button {
+  width: fit-content;
+  font-size: 5vmin;
+}
+
+// Sections
+section {
+  padding-top: 4vh;
+  padding-bottom: 4vh;
+  margin: 0 10rem;
+  box-sizing: border-box;
+  min-height: fit-content;
+}
+
+.section-container {
+  display: flex;
+}
+
+// Icons
+.icon {
+  cursor: pointer;
+  height: 2rem;
+}
+
+// Buttons
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  font-weight: 600;
+  transition: all 300ms ease;
+  padding: 1rem;
+  width: 8rem;
+  border-radius: 2rem;
+}
+
+.btn-color-1,
+.btn-color-2 {
+  border: $clr-surface-a50 0.1rem solid;
+  
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn-color-1 {
+  background: rgb(53, 53, 53);
+  color: $clr-surface-a50;
+  
+  &:hover {
+    background: rgb(0, 0, 0);
+  }
+}
+
+.btn-color-2 {
+  background: none;
+  
+  &:hover {
+    background: rgb(53, 53, 53);
+    color: $clr-surface-a50;
+    border: rgb(255, 255, 255) 0.1rem solid;
+  }
+}
+
+.content-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $clr-surface-a10;
+}
+
+.nav-style-link {
+  color: $clr-surface-a50;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 1rem;
+  border: 2px solid $clr-primary-a30;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  transition: color 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: $clr-primary-a30;
+    transition: width 0.3s ease;
+    border-radius: 5px;
+    z-index: -1;
+  }
+  
+  &:hover {
+    color: $clr-light-a0;
+    text-decoration: none;
+    
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &:not(:hover) {
+    &::after {
+      transition: width 0.3s ease;
+      width: 0;
+      right: 0;
+      left: auto;
+    }
+  }
+}

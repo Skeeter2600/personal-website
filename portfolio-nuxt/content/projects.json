@@ -1,0 +1,44 @@
+[
+    {
+      "slug": "protein-synthesis-simulation",
+      "title": "Simulation of Protein Synthesis",
+      "tag": "Senior Project",
+      "description": "My senior project for my time at Rochester Institute of Technology. This has involved working on a team to redesign an existing product used by college students and professionals to simulate and analyze protein structure and function.",
+      "imageSrc": "/images/electrophoresis.jpg",
+      "linkUrl": "https://amrmualla.github.io/SEProjectWebsite/",
+      "linkText": "Project Website",
+      "technologies": ["JavaScript", "React", "Node.js", "Molecular Visualization", "WebGL"],
+      "content": "<p>This senior project involved reimagining and modernizing a critical educational tool used for protein structure analysis. The application allows users to visualize complex protein structures, simulate protein folding processes, and analyze protein-protein interactions in a user-friendly interface.</p><p>Working with a team of four software engineers, we completely redesigned the user experience while maintaining the scientific accuracy that made the original tool valuable to students and researchers.</p><p>The new version includes interactive 3D protein models, real-time simulation controls, and the ability to export analysis results for further research.</p>"
+    },
+    {
+      "slug": "world-construct",
+      "title": "World Construct",
+      "tag": "Personal Project",
+      "description": "This application is intended to be used as a source to organize, sort and distribute information related to any setting, whether it be a D&D campaign or any other work.",
+      "imageSrc": "/images/world_construct.jpg",
+      "linkUrl": "https://github.com/Skeeter2600/World-Construct",
+      "linkText": "Repository",
+      "technologies": ["Python", "Django", "JavaScript", "PostgreSQL", "RESTful API"],
+      "content": "<p>World Construct is a comprehensive world-building tool designed for writers, game masters, and creative minds. This application helps users organize and manage vast amounts of information about fictional worlds, characters, locations, and plot elements.</p><p>As a personal project, World Construct allowed me to explore database design for complex hierarchical data, implement advanced search and filtering capabilities, and create an intuitive UI for managing interconnected content.</p><p>The application features a hierarchical organization system, relationship mapping between entities, custom tagging, and export options for various formats.</p>"
+    },
+    {
+      "slug": "recipe-cards",
+      "title": "Recipe Cards",
+      "tag": "Professional",
+      "description": "Individual assignment done during my time at Ecolab. Developed a prototype system for a potential future product. Worked with company stakeholders to ensure it was up to their standards and incorporated feedback from meetings.",
+      "imageSrc": "/images/RecipeCards.png",
+      "linkUrl": "https://www.figma.com/file/kpA8eZT3m52YhCRhdB1pXj/Recipe-Cards?type=design&node-id=0%3A1&mode=design&t=ZwAvFUGCapBK9Ynr-1",
+      "linkText": "Figma Board",
+      "technologies": ["UX Design", "Figma", "Prototyping", "User Research"],
+      "content": "<p>During my internship at Ecolab, I was tasked with designing and prototyping a Recipe Cards application that would streamline the creation and sharing of standardized protocols in industrial settings.</p><p>This project involved extensive stakeholder interviews, competitive analysis, and multiple rounds of design reviews to ensure the final product would meet the needs of field technicians and managers.</p><p>The design emphasizes clarity, ease of use in industrial environments, and compatibility with existing Ecolab systems. I created high-fidelity mockups and interactive prototypes that were used to secure funding for further development.</p>"
+    },
+    {
+      "slug": "reddit-sentiment-analysis",
+      "title": "Reddit Sentiment Analysis",
+      "tag": "Education",
+      "description": "Built from the ground up an application to process the user sentiment of posts on Reddit. Worked together in a team of 5 individuals using Git and AWS Technologies, including DynamoDB, AWS Comprehend, API Gateway, and Terraform.",
+      "imageSrc": "/images/reddit.png",
+      "technologies": ["AWS", "Python", "Natural Language Processing", "DynamoDB", "Terraform", "API Gateway"],
+      "content": "<p>This educational project focused on analyzing sentiment trends across different Reddit communities. Our team developed a serverless application that collects posts from specified subreddits, processes them using AWS Comprehend for sentiment analysis, and stores the results in DynamoDB.</p><p>My primary responsibilities included building the data processing pipeline, implementing the sentiment analysis logic, and creating visualizations to present our findings.</p><p>The application provides real-time sentiment tracking, historical trend analysis, and comparative metrics across different communities. We used infrastructure as code principles with Terraform to ensure consistent deployments across environments.</p>"
+    }
+  ]
