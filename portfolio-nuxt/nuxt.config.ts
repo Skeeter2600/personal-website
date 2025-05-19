@@ -51,5 +51,4 @@ export default {
   generate: {
     fallback: true,
   },
-  plugins: ["~/plugins/vercel-analytics.client.ts"],
 };
