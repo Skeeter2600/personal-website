@@ -1,14 +1,25 @@
 <template>
-    <div>
-      <Header></Header>
-      <NuxtPage />
-    </div>
-  </template>
-  
-  <script lang="ts">
-    import {defineComponent} from "vue";
+  <div>
+    <Header></Header>
+    <NuxtPage />
+  </div>
+</template>
 
-    export default defineComponent({
-      name: 'DefaultLayout'
-    })
-  </script>
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "DefaultLayout",
+  head() {
+    return {
+      script: [
+        {
+          hid: "vercel-analytics",
+          src: "/_vercel/insights/script.js",
+          defer: true,
+        },
+      ],
+    };
+  },
+});
+</script>
