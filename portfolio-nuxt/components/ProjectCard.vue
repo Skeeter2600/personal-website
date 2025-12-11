@@ -37,38 +37,53 @@
   });
   </script>
   
-  <style lang="scss" scoped>
+<style lang="scss" scoped>
     @import '@/assets/scss/main.scss';
   
     .project-card-body {
       background-color: $clr-surface-a10;
-      border: 5px solid $clr-primary-a10;
+      border: 5px solid $clr-primary-a30; /* Updated to Orange */
       margin: 25px 0;
       overflow: hidden;
-      width: auto;
-      min-width: 350px;
-      max-width: 40%;
+      width: 100%;
+      max-width: 600px; /* Sensible desktop max width */
       border-radius: 35px;
+      
+      @media (min-width: 1024px) {
+         max-width: 40%;
+         min-width: 350px;
+      }
     }
   
+    .content-img {
+       width: 100%;
+    }
+
+    .content-img a {
+        width: 100%;
+        display: block;
+    }
+
     .project-card-image {
-      border-bottom: 4px solid $clr-primary-a10;
+      border-bottom: 4px solid $clr-primary-a30; /* Updated to Orange */
       width: 100%;
-      min-width: 40rem;
+      aspect-ratio: 16/9; /* Restored aspect ratio */
       overflow: hidden;
-      aspect-ratio: 16/9;
       object-fit: cover;
       display: flex;
       justify-content: center;
-      background-color: $clr-surface-a10;
+      background-color: $clr-surface-a10; 
     }
   
     .project-card-tag {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
       background-color: $clr-surface-a10;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: $clr-primary-a30;
     }
   
     .project-card-title {
@@ -77,6 +92,8 @@
       justify-content: center;
       background-color: $clr-surface-a10;
       color: $clr-light-a0;
+      padding: 0.5rem 1rem;
+      font-size: 1.5rem; /* Increased size */
     }
   
     .project-card-text {
@@ -86,16 +103,20 @@
       align-content: center;
       height: 100%;
       background-color: $clr-surface-a10;
+      padding: 1rem; /* Restore some padding */
     }
   
     .project-card-description {
       display: flex;
       align-items: center;
       flex-direction: column;
-      font-size: medium;
+      font-size: 1.1rem; /* Increased from 0.95rem */
+      line-height: 1.7;
       margin: .5rem;
       margin-bottom: 2rem;
       background-color: $clr-surface-a10;
+      color: #d1d1d1; /* Lighter/Softer white */
+      font-weight: 300;
     }
   
     .project-link-container {

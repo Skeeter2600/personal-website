@@ -20,11 +20,13 @@
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const targetId = this.getAttribute('href');
+        const targetId = (this as HTMLElement).getAttribute('href');
+        if (!targetId) return;
         const targetElement = document.querySelector(targetId);
         
         if (targetElement) {
-          const navHeight = document.getElementById('desktop-nav').offsetHeight;
+          const navElement = document.getElementById('desktop-nav');
+          const navHeight = navElement ? navElement.offsetHeight : 80;
           const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
           
           window.scrollTo({
@@ -33,23 +35,6 @@
           });
         }
       });
-    });
-    
-    // Setup intersection observer for fade-in animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // Stop observing after animation
-        }
-      });
-    }, { threshold: 0.1 }); // Trigger when 10% of element is visible
-    
-    // Observe all major sections
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-      section.classList.add('fade-in');
-      observer.observe(section);
     });
   });
   </script>
@@ -61,11 +46,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      @include glass-effect;
       padding: 1.5rem 5%;
       height: auto;
-      background-color: $clr-surface-a10;
+      /* background-color: $clr-surface-a10; Removed for glass effect */
       border-radius: 0 0 1.5rem 1.5rem;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); Handled by glass mixin */
       width: 90%;
       max-width: 100%;
       margin: 0 auto;

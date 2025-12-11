@@ -14,7 +14,7 @@
           <p class="section__text__p1">Hello World! I'm</p>
           <h1 class="title">Beck Anderson</h1>
           <p>
-            I am currently an Associate Software Engineer at Evo Security, helping create a more secure digital world.
+            I am currently an Software Engineer I at Evo Security, helping create a more secure digital world.
             In May of 2024, I graduated from the Rochester Institute of Technology with a major in Software
             Engineering with a minor in Computer Engineering. Throughout my time in school and in industry,
             I have had countless opportunities to demonstrate the skills that I have learned, ranging from coding
@@ -58,8 +58,9 @@
       width: 50vmin;
       margin: auto 0;
       background-color: $clr-primary-a10;
-      border: 5px solid $clr-primary-a0;
+      border: 5px solid $clr-primary-a30; /* Updated to Orange */
       border-radius: 35px;
+      object-fit: cover; /* Ensure image fits well */
     }
   
     .section__text {
@@ -71,11 +72,17 @@
     }
   
     .section__text p {
-      font-weight: 600;
+      font-weight: 400; /* Reduced from 600 for better readability */
+      font-size: 1.1rem; /* Fixed readable size */
+      line-height: 1.8;
+      color: $clr-surface-tonal-a50; /* Softer text color */
     }
   
     .section__text__p1 {
       text-align: center;
+      font-size: 1.2rem !important; /* Larger intro */
+      margin-bottom: 0.5rem;
+      color: $clr-primary-a30 !important; /* Orange accent */
     }
   
     .section__text__p2 {

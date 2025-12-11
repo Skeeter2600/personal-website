@@ -1,7 +1,7 @@
 [
     {
       "company": "Evo Security",
-      "position": "Associate Software Engineer",
+      "position": "Software Engineer I",
       "period": "July 2024 - Present",
       "description": "● Redesigned and modernized the company's user portal using Vue/Nuxt, enhancing user experience and interface responsiveness.\n● Created and privately published GitHub packages to handle processing files for metadata and generating AI powered file analysis and virus safety reports.\n● Collaborated with an international team via daily meetings and using Jira to properly assign and manage project tasks and goals.",
       "logoSrc": "/images/evo_security_logo.jpeg",

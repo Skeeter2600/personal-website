@@ -1,7 +1,11 @@
 <template>
   <div>
+    <ClientOnly>
+      <BackgroundParticles />
+    </ClientOnly>
     <Header></Header>
     <NuxtPage />
+    <MagneticContact />
   </div>
 </template>
 

@@ -58,26 +58,35 @@
   
     .experience-card-body {
       background-color: $clr-surface-a10;
-      border: 1px solid $clr-primary-a10;
+      border: 1px solid $clr-primary-a30; /* Updated to Orange */
       margin: 25px 0;
       overflow: hidden;
       border-radius: 35px;
       border-width: 5px;
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
+      align-items: center; /* Vertically center content */
       justify-content: center;
+      width: 100%;
+      max-width: 1250px; /* Increased max-width */
+      
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   
     .experience-card-image {
       height: auto;
       overflow: hidden;
       aspect-ratio: 1/1;
-      max-height: 18vmax;
+      width: 18rem; /* Increased size */
+      max-width: 80%;
       display: flex;
+      flex-shrink: 0; /* Prevent shrinking */
       object-fit: cover;
       justify-content: center;
-      padding: 3rem;
+      padding: 2rem;
       border-radius: 60px;
       background-color: $clr-surface-a10;
     }
@@ -88,10 +97,17 @@
       justify-content: center;
       align-content: center;
       height: 100%;
-      padding: 3rem;
-      width: 70vmin;
+      padding: 2rem; /* Restored padding */
+      flex: 1; /* Take remaining space */
+      width: auto;
+      max-width: 100%;
       color: $clr-light-a0;
       background-color: $clr-surface-a10;
+      
+      @media (max-width: 768px) {
+        padding: 1.5rem;
+        text-align: center;
+      }
     }
   
     .experience-card-position-container {
@@ -100,12 +116,15 @@
       flex-wrap: wrap;
       justify-content: space-between;
       background-color: $clr-surface-a10;
+      margin-bottom: 1rem;
     }
   
     .experience-position-info {
       padding-bottom: .5rem;
-      font-size: 3vmin;
+      font-size: 1.5rem; /* Increased from 1.2rem */
+      font-weight: 500;
       background-color: $clr-surface-a10;
+      color: $clr-primary-a30;
     }
   
     .experience-card-description {
@@ -113,6 +132,10 @@
       flex-direction: column;
       white-space: pre-line;
       background-color: $clr-surface-a10;
+      font-size: 1.1rem; /* Increased from 0.95rem */
+      line-height: 1.7; /* Slightly looser line-height */
+      font-weight: 300;
+      color: #d1d1d1;
     }
   
     .experience-card_link_boarder {

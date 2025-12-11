@@ -67,7 +67,8 @@
         border-color: $clr-surface-a10;
         margin: 2rem 0 2rem 0;
         padding: 0.5rem;
-        background-color: $clr-surface-a10;
+        /* background-color: $clr-surface-a10; Removed */
+        @include glass-effect;
     }
   
     .contact-info-container {
@@ -76,18 +77,45 @@
         justify-content: center;
         gap: 0.5rem;
         margin: 1rem;
-        background-color: $clr-surface-a10;
+        background-color: transparent;
     }
   
     .contact-info-container p {
-        background-color: $clr-surface-a10;
+        background-color: transparent;
         font-size: 2vmin;
+    }
+  
+    .contact-info-container a {
+        color: $clr-surface-a50;
+        text-decoration: none;
+        position: relative;
+        padding: 0.2rem 0;
+        transition: color 0.3s ease;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: $clr-primary-a30;
+            transition: width 0.3s ease;
+        }
+        
+        &:hover {
+            color: $clr-light-a0;
+            
+            &::after {
+                width: 100%;
+            }
+        }
     }
   
     .contact-icon {
         cursor: default;
         color: $clr-surface-a40;
-        background-color: $clr-surface-a10;
+        background-color: transparent;
     }
   
     .email-icon {
