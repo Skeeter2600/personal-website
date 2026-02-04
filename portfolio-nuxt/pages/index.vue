@@ -19,6 +19,7 @@
     import ProjectsSection from "~/components/ProjectsSection.vue";
     import ContactSection from "~/components/ContactSection.vue";
     import ExperiencesSection from "~/components/ExperiencesSection.vue";
+    import { Analytics } from '@vercel/analytics/nuxt'
   
     export default defineComponent({
       components: {ExperiencesSection, ContactSection, ProjectsSection, EducationSection, AboutSection}
