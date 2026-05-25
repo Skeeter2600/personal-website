@@ -44,6 +44,15 @@ const experiences = [
     websiteUrl: 'https://www.evosecurity.com/',
   },
   {
+    company: 'RIT',
+    position: 'Course Assistant',
+    period: 'August 2023 - May 2024',
+    description:
+      '● Facilitated learning for 25+ software development and engineering students by leading technical discussions, hosting mentoring sessions, and providing constructive feedback on coursework.\n● Boosted student engagement and learning outcomes through responsive technical support, including answering questions during class and grading assignments with detailed feedback, resulting in 75% of students getting a B or better.',
+    imageSrc: 'RIT.png',
+    websiteUrl: 'https://www.rit.edu/computing/',
+  },
+  {
     company: 'Ecolab',
     position: 'Software Engineer Co-op',
     period: 'Jan 2023 - May 2023',
