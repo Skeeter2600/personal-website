@@ -1,10 +1,12 @@
 <template>
   <div>
+    <AnnouncementBanner />
     <ClientOnly>
       <BackgroundParticles />
     </ClientOnly>
-    <Header></Header>
+    <Header />
     <NuxtPage />
+    <ScrollProgressBar />
     <MagneticContact />
   </div>
 </template>
@@ -13,6 +15,6 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "DefaultLayout",
+  name: "App",
 });
 </script>
