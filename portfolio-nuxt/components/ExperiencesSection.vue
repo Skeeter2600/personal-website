@@ -32,7 +32,7 @@ const sectionRef = ref(null);
 
 const experiences = [
   {
-    company: 'Evo Security',
+    company: 'Barracuda (Formerly Evo Security',
     period: 'July 2024 - Present',
     positions: [
       { title: 'Software Engineer I', period: 'Sept 2025 - Present' },
@@ -40,7 +40,7 @@ const experiences = [
     ],
     description:
       "● Owned and executed the end-to-end product delivery of an overhauled customer onboarding flow using Ruby on Rails and Vue, directly lowering friction and accelerating initial user activation metrics.\n● Designed and built custom internal GitHub packages for automated metadata processing and AI-powered file analysis reports, boosting platform file-safety visibility.\n● Maintained existing legacy React infrastructure while leading the complete UX modernization of the primary client portal using Nuxt and TypeScript, acting heavily on direct user feedback.\n● Collaborated with an international team via daily meetings, using Jira to properly assign and manage project tasks and goals, completing PR and QA reviews, and giving overall guidance to others",
-    imageSrc: 'evo_security_logo.jpeg',
+    imageSrc: 'Barracuda.jpg',
     websiteUrl: 'https://www.evosecurity.com/',
   },
   {

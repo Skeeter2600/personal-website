@@ -23,7 +23,7 @@
         <span class="hello-label">Hello, I'm</span>
         <h1 class="name-heading">Beck Anderson</h1>
         <p class="bio-text">
-          Software Engineer at Evo Security, building secure digital experiences.
+          Software Engineer at Barracuda, building secure digital experiences.
           RIT '24 graduate specializing in Vue, Nuxt, React, and full-stack development.
         </p>
       </div>
@@ -35,7 +35,7 @@
         <div class="company-block">
           <div class="company-name-row">
             <span class="shield-icon" aria-hidden="true">🛡️</span>
-            <span class="company-name-text">Evo Security</span>
+            <span class="company-name-text">Barracuda</span>
           </div>
           <p class="role-title">Software Engineer I</p>
           <div class="company-meta">
@@ -56,7 +56,7 @@
           rel="noopener noreferrer"
           class="company-link"
         >
-          Visit Evo Security →
+          Visit Barracuda (formerly Evo Security) →
         </a>
       </div>
 
