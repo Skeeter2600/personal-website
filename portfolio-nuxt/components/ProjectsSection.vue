@@ -14,14 +14,14 @@
 
     <!-- Featured project — always visible -->
     <FeaturedProjectCard
-      title="Clepa"
+      title="Riffhouse"
       tag="Professional"
-      description="Clepa is an intelligent Telehealth ecosystem designed to bridge the gap between at-home recovery and clinical care. We provide a centralized platform for real-time vitals monitoring, medication adherence, and virtual care coordination—empowering healthcare providers to deliver proactive, continuous support that improves patient outcomes and reduces hospital readmissions."
-      imageSrc="clepa.png"
-      linkUrl="https://clepahealth.com/waitlist"
-      linkText="Sign Up for Beta"
-      status="beta"
-      cardLinkUrl="https://clepahealth.com"
+      description="Riffhouse is an intelligent music platform designed to bridge the gap between at-home music creation and professional production. We provide a centralized platform for real-time virtual band practice, AI-powered mixing and mastering, and seamless collaboration tools—empowering musicians to create and share their music with the world."
+      imageSrc="riffhouse.svg"
+      linkUrl="https://github.com/Skeeter2600/Riffhouse"
+      linkText="View on GitHub"
+      status="open-source"
+      cardLinkUrl="https://github.com/Skeeter2600/Riffhouse"
     />
 
     <!-- Project grid -->
@@ -40,6 +40,17 @@ import FeaturedProjectCard from '~/components/FeaturedProjectCard.vue';
 import ProjectCard from '~/components/ProjectCard.vue';
 
 const projects = [
+  {
+    title: 'Clepa',
+    tag: 'Professional',
+    description:
+      'Clepa is an intelligent Telehealth ecosystem designed to bridge the gap between at-home recovery and clinical care. We provide a centralized platform for real-time vitals monitoring, medication adherence, and virtual care coordination—empowering healthcare providers to deliver proactive, continuous support that improves patient outcomes and reduces hospital readmissions.',
+    imageSrc: 'clepa.png',
+    linkUrl: 'https://clepahealth.com/waitlist',
+    linkText: 'Sign Up for Beta',
+    status: 'beta',
+    cardLinkUrl: 'https://clepahealth.com',
+  },
   {
     title: 'Simulation of Protein Synthesis',
     tag: 'Senior Project',
