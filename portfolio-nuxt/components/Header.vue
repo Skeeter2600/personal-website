@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 
 const navItems = [
   { href: '#about',     id: 'about',     label: 'About Me'   },
@@ -29,43 +29,87 @@ const navItems = [
 ];
 
 const activeSection = ref('about');
+let isScrollingTo = false;
+let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
+let ticking = false;
+
+function updateActiveSection() {
+  if (isScrollingTo) return;
+
+  const scrollY = window.scrollY || window.pageYOffset;
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
+
+  // If scrolled close to the bottom of the page, activate the last nav item
+  if (scrollY + windowHeight >= documentHeight - 60) {
+    activeSection.value = navItems[navItems.length - 1].id;
+    return;
+  }
+
+  const navElement = document.getElementById('desktop-nav');
+  const navHeight = navElement ? navElement.offsetHeight : 80;
+  const offset = navHeight + 80;
+
+  // Find the last section whose top is at or above the threshold offset
+  let current = navItems[0].id;
+  for (const item of navItems) {
+    const el = document.getElementById(item.id);
+    if (el) {
+      const top = el.getBoundingClientRect().top;
+      if (top <= offset) {
+        current = item.id;
+      }
+    }
+  }
+  activeSection.value = current;
+}
+
+function onScroll() {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      updateActiveSection();
+      ticking = false;
+    });
+    ticking = true;
+  }
+}
 
 function scrollTo(href: string) {
   const targetId = href;
   const targetElement = document.querySelector(targetId);
   if (!targetElement) return;
+
+  const id = href.replace('#', '');
+  activeSection.value = id;
+  isScrollingTo = true;
+
+  if (scrollTimeout) clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    isScrollingTo = false;
+    updateActiveSection();
+  }, 800);
+
   const navElement = document.getElementById('desktop-nav');
   const navHeight = navElement ? navElement.offsetHeight : 80;
   const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
   window.scrollTo({ top: targetPosition - navHeight - 20, behavior: 'smooth' });
 }
 
-let observer: IntersectionObserver | null = null;
-
 onMounted(() => {
-  const sections = navItems.map(item => document.getElementById(item.id)).filter(Boolean);
-
-  observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          activeSection.value = entry.target.id;
-        }
-      });
-    },
-    {
-      rootMargin: '-20% 0px -60% 0px',
-      threshold: 0,
-    }
-  );
-
-  sections.forEach(section => {
-    if (section) observer!.observe(section);
+  nextTick(() => {
+    updateActiveSection();
   });
+  setTimeout(updateActiveSection, 150);
+  setTimeout(updateActiveSection, 500);
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
 });
 
 onUnmounted(() => {
-  if (observer) observer.disconnect();
+  window.removeEventListener('scroll', onScroll);
+  window.removeEventListener('resize', onScroll);
+  if (scrollTimeout) clearTimeout(scrollTimeout);
 });
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-<div
+  <div
     class="featured-card"
     :class="{ 'clickable-card': cardLinkUrl }"
     @click="onCardClick"
@@ -33,12 +33,20 @@
 
     <!-- Content side -->
     <div class="featured-content">
-      <div class="featured-meta">
-        <span class="featured-label">✦ Featured</span>
-        <span class="tag-pill">{{ tag }}</span>
-      </div>
-
       <h2 class="featured-title">{{ title }}</h2>
+
+      <!-- Tech Stack with logos/icons -->
+      <div v-if="techStack && techStack.length" class="tech-stack-row">
+        <span
+          v-for="tech in techStack"
+          :key="getTechName(tech)"
+          class="tech-chip"
+          :title="getTechName(tech)"
+        >
+          <TechIcon :name="getTechName(tech)" />
+          <span class="tech-name">{{ getTechName(tech) }}</span>
+        </span>
+      </div>
 
       <p class="featured-description">{{ description }}</p>
 
@@ -49,13 +57,23 @@
         rel="noreferrer"
         class="nav-style-link featured-link"
       >
-        {{ linkText || 'View Project' }}
+        <span>{{ linkText || 'View Project' }}</span>
+        <i v-if="linkUrl.includes('github')" class="bx bxl-github link-icon"></i>
+        <i v-else-if="linkUrl.includes('figma')" class="bx bxl-figma link-icon"></i>
+        <i v-else class="bx bx-link-external link-icon"></i>
       </a>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import TechIcon from '~/components/TechIcon.vue';
+
+interface TechItem {
+  name: string;
+  icon?: string;
+}
+
 const props = defineProps({
   title: {
     type: String,
@@ -89,7 +107,15 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  techStack: {
+    type: Array as () => Array<TechItem | string>,
+    default: () => [],
+  },
 });
+
+const getTechName = (tech: TechItem | string): string => {
+  return typeof tech === 'object' && tech.name ? tech.name : (tech as string);
+};
 
 const onCardClick = (e: MouseEvent) => {
   // Prevent navigating twice if user clicks the button link directly
@@ -105,7 +131,7 @@ const onCardClick = (e: MouseEvent) => {
 <style lang="scss" scoped>
 @import '@/assets/scss/main.scss';
 
-/* ── Featured card shell ── */
+/* -- Featured card shell -- */
 .featured-card {
   display: flex;
   flex-direction: row;
@@ -132,7 +158,7 @@ const onCardClick = (e: MouseEvent) => {
   }
 }
 
-/* ── Image side ── */
+/* -- Image side -- */
 .featured-image-wrapper {
   position: relative;
   flex: 0 0 45%;
@@ -176,7 +202,7 @@ const onCardClick = (e: MouseEvent) => {
   }
 }
 
-/* ── Status badge ── */
+/* -- Status badge -- */
 .status-badge {
   position: absolute;
   top: 0.75rem;
@@ -215,7 +241,7 @@ const onCardClick = (e: MouseEvent) => {
   }
 }
 
-/* ── Content side ── */
+/* -- Content side -- */
 .featured-content {
   flex: 1;
   display: flex;
@@ -261,15 +287,57 @@ const onCardClick = (e: MouseEvent) => {
   line-height: 1.2;
 }
 
+/* -- Tech Stack with logos/icons -- */
+.tech-stack-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tech-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #e2e2e2;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 0.22rem 0.55rem;
+  transition: all 0.2s ease;
+
+  :deep(.tech-icon-container) {
+    color: $clr-primary-a30;
+  }
+
+  &:hover {
+    background: rgba(200, 106, 85, 0.15);
+    border-color: rgba(200, 106, 85, 0.4);
+    color: $clr-light-a0;
+
+    :deep(.tech-icon-container) {
+      color: $clr-primary-a40;
+    }
+  }
+}
+
 .featured-description {
   font-size: 0.95rem;
   color: #d1d1d1;
-  line-height: 1.75;
+  line-height: 1.7;
   font-weight: 300;
 }
 
 .featured-link {
   align-self: flex-start;
   margin-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  .link-icon {
+    font-size: 1.05rem;
+  }
 }
 </style>

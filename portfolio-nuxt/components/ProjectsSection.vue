@@ -12,22 +12,15 @@
       Projects
     </h1>
 
-    <!-- Featured project — always visible -->
+    <!-- Featured project � always visible -->
     <FeaturedProjectCard
-      title="Riffhouse"
-      tag="Professional"
-      description="Riffhouse is an intelligent music platform designed to bridge the gap between at-home music creation and professional production. We provide a centralized platform for real-time virtual band practice, AI-powered mixing and mastering, and seamless collaboration tools—empowering musicians to create and share their music with the world."
-      imageSrc="riffhouse.svg"
-      linkUrl="https://github.com/Skeeter2600/Riffhouse"
-      linkText="View on GitHub"
-      status="open-source"
-      cardLinkUrl="https://github.com/Skeeter2600/Riffhouse"
+      v-bind="featuredProject"
     />
 
     <!-- Project grid -->
     <div class="project-container">
       <ProjectCard
-        v-for="(project, index) in projects"
+        v-for="project in projects"
         :key="project.title"
         v-bind="project"
       />
@@ -39,48 +32,65 @@
 import FeaturedProjectCard from '~/components/FeaturedProjectCard.vue';
 import ProjectCard from '~/components/ProjectCard.vue';
 
+const featuredProject = {
+  title: 'Riffhouse',
+  tag: 'Professional',
+  description:
+    'Riffhouse is a lightweight, cross-platform music streaming client that connects to your self-hosted Jellyfin media server. No subscriptions, no tracking, no ads—just your music library, your way. Stream your personal collection anywhere, offline-first caching, integrated podcasts, and built-in Android Auto support.',
+  imageSrc: 'riffhouse.svg',
+  linkUrl: 'https://github.com/Skeeter2600/Riffhouse',
+  linkText: 'View on GitHub',
+  status: 'open-source',
+  cardLinkUrl: 'https://github.com/Skeeter2600/Riffhouse',
+  techStack: ['SQLite', 'Flutter', 'Dart'],
+};
+
 const projects = [
   {
     title: 'Clepa',
     tag: 'Professional',
     description:
-      'Clepa is an intelligent Telehealth ecosystem designed to bridge the gap between at-home recovery and clinical care. We provide a centralized platform for real-time vitals monitoring, medication adherence, and virtual care coordination—empowering healthcare providers to deliver proactive, continuous support that improves patient outcomes and reduces hospital readmissions.',
+      'Intelligent telehealth platform providing real-time vitals monitoring, medication adherence, and virtual care coordination.',
     imageSrc: 'clepa.png',
-    linkUrl: 'https://clepahealth.com/waitlist',
-    linkText: 'Sign Up for Beta',
+    linkUrl: 'https://clepahealth.com',
+    linkText: 'Website',
     status: 'beta',
     cardLinkUrl: 'https://clepahealth.com',
+    techStack: ['Vue.js', 'Firebase', 'TypeScript', 'Python', 'FastAPI', 'GCP'],
   },
   {
     title: 'Simulation of Protein Synthesis',
     tag: 'Senior Project',
     description:
-      'My senior project for my time at Rochester Institute of Technology. This has involved working on a team to redesign an existing product used by college students and professionals to simulate and analyze protein structure and function.',
+      'Simulation suite redesigned for students and researchers to model and analyze protein structure and function.',
     imageSrc: 'electrophoresis.jpg',
     linkUrl: 'https://amrmualla.github.io/SEProjectWebsite/',
     linkText: 'Project Website',
     status: 'live',
+    techStack: ['React', 'Python', 'FastAPI', 'Javascript'],
   },
   {
     title: 'World Construct',
     tag: 'Personal Project',
     description:
-      'This application is intended to be used as a source to organize, sort and distribute information related to any setting, whether it be a D&D campaign or any other work.',
+      'Interactive worldbuilding tool to organize, map, and distribute lore and campaign settings.',
     imageSrc: 'world_construct.jpg',
     linkUrl: 'https://github.com/Skeeter2600/World-Construct',
     linkText: 'Repository',
     status: 'open-source',
+    techStack: ['JavaFX', 'PostgreSQL', 'Python'],
   },
   {
     title: 'Recipe Cards',
     tag: 'Professional',
     description:
-      'Individual assignment done during my time at Ecolab. Developed a prototype system for a potential future product. Worked with company stakeholders to ensure it was up to their standards and incorporated feedback from meetings.',
+      'Product prototype developed at Ecolab featuring stakeholder-validated workflows and interactive UI components.',
     imageSrc: 'RecipeCards.png',
     linkUrl:
       'https://www.figma.com/file/kpA8eZT3m52YhCRhdB1pXj/Recipe-Cards?type=design&node-id=0%3A1&mode=design&t=ZwAvFUGCapBK9Ynr-1',
     linkText: 'Figma Board',
     status: 'live',
+    techStack: ['Figma'],
   },
 ];
 </script>
@@ -103,8 +113,7 @@ const projects = [
   text-align: center;
 }
 
-
-/* ── Projects grid ── */
+/* -- Projects grid -- */
 .project-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -35,7 +35,10 @@
           rel="noreferrer"
           class="nav-style-link overlay-link"
         >
-          {{ linkText || 'View Project' }}
+          <span>{{ linkText || 'View Project' }}</span>
+          <i v-if="linkUrl.includes('github')" class="bx bxl-github link-icon"></i>
+          <i v-else-if="linkUrl.includes('figma')" class="bx bxl-figma link-icon"></i>
+          <i v-else class="bx bx-link-external link-icon"></i>
         </a>
       </div>
     </div>
@@ -44,11 +47,31 @@
     <div class="project-card-bottom">
       <p class="project-card-tag">{{ tag }}</p>
       <h2 class="project-card-title">{{ title }}</h2>
+
+      <!-- Tech stack with logos/icons -->
+      <div v-if="techStack && techStack.length" class="tech-stack-row">
+        <span
+          v-for="tech in techStack"
+          :key="getTechName(tech)"
+          class="tech-chip"
+          :title="getTechName(tech)"
+        >
+          <TechIcon :name="getTechName(tech)" />
+          <span class="tech-name">{{ getTechName(tech) }}</span>
+        </span>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import TechIcon from '~/components/TechIcon.vue';
+
+interface TechItem {
+  name: string;
+  icon?: string;
+}
+
 defineProps({
   title: {
     type: String,
@@ -78,13 +101,21 @@ defineProps({
     type: String,
     default: '',
   },
+  techStack: {
+    type: Array as () => Array<TechItem | string>,
+    default: () => [],
+  },
 });
+
+const getTechName = (tech: TechItem | string): string => {
+  return typeof tech === 'object' && tech.name ? tech.name : (tech as string);
+};
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/main.scss';
 
-/* ── Card shell ── */
+/* -- Card shell -- */
 .project-card-body {
   background-color: $clr-surface-a10;
   border: 2px solid rgba(200, 106, 85, 0.3);
@@ -92,6 +123,8 @@ defineProps({
   overflow: hidden;
   max-width: 380px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
   transition: all 0.3s ease;
   cursor: default;
 
@@ -101,7 +134,7 @@ defineProps({
   }
 }
 
-/* ── Image wrapper ── */
+/* -- Image wrapper -- */
 .image-wrapper {
   position: relative;
   overflow: hidden;
@@ -119,7 +152,7 @@ defineProps({
   transform: scale(1.05);
 }
 
-/* ── Status badge ── */
+/* -- Status badge -- */
 .status-badge {
   position: absolute;
   top: 0.75rem;
@@ -159,7 +192,7 @@ defineProps({
   }
 }
 
-/* ── Hover overlay ── */
+/* -- Hover overlay -- */
 .hover-overlay {
   position: absolute;
   inset: 0;
@@ -169,7 +202,7 @@ defineProps({
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1.25rem;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.35s ease, transform 0.35s ease;
@@ -182,31 +215,37 @@ defineProps({
 
 .overlay-description {
   color: white;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   text-align: center;
-  line-height: 1.6;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.55;
+  font-weight: 300;
 }
 
 .overlay-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 0.85rem;
   padding: 0.45rem 1.1rem;
   white-space: nowrap;
+
+  .link-icon {
+    font-size: 1rem;
+  }
 }
 
-/* ── Bottom section ── */
+/* -- Bottom section -- */
 .project-card-bottom {
   padding: 1rem 1.25rem 1.25rem;
   background-color: $clr-surface-a10;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .project-card-tag {
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.78rem;
+  font-weight: 600;
   color: $clr-primary-a30;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -217,5 +256,42 @@ defineProps({
   font-size: 1.25rem;
   font-weight: 700;
   color: $clr-light-a0;
+  line-height: 1.3;
+}
+
+/* -- Tech Stack Icons -- */
+.tech-stack-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.tech-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #dcdcdc;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0.22rem 0.5rem;
+  transition: all 0.2s ease;
+
+  :deep(.tech-icon-container) {
+    color: $clr-primary-a30;
+  }
+
+  &:hover {
+    background: rgba(200, 106, 85, 0.15);
+    border-color: rgba(200, 106, 85, 0.4);
+    color: $clr-light-a0;
+
+    :deep(.tech-icon-container) {
+      color: $clr-primary-a40;
+    }
+  }
 }
 </style>

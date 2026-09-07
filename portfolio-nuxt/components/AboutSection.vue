@@ -68,7 +68,10 @@
             v-for="tech in techStack"
             :key="tech"
             class="tech-pill"
-          >{{ tech }}</span>
+          >
+            <TechIcon :name="tech" />
+            <span>{{ tech }}</span>
+          </span>
         </div>
       </div>
 
@@ -94,6 +97,8 @@
 </template>
 
 <script setup lang="ts">
+import TechIcon from '~/components/TechIcon.vue';
+
 const techStack = [
   'Vue',
   'Nuxt',
@@ -306,15 +311,22 @@ const techStack = [
   }
 
   .tech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
     background: rgba(255, 255, 255, 0.07);
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 999px;
-    padding: 0.3rem 0.85rem;
+    padding: 0.35rem 0.85rem;
     font-size: 0.8rem;
     color: $clr-light-a0;
     font-weight: 500;
     cursor: default;
     transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+
+    :deep(.tech-icon-container) {
+      color: $clr-primary-a30;
+    }
 
     &:hover {
       background: rgba(200, 106, 85, 0.12);
